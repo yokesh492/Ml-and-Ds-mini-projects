@@ -7,6 +7,9 @@ from src.logger import logging
 from dataclasses import dataclass
 from sklearn.model_selection import train_test_split
 
+#########for debugging purpose
+from src.components.data_transformation import DataTransformation
+
 
 @dataclass
 class DataIngestionConfig:
@@ -52,4 +55,8 @@ class DataIngestion:
 
 if __name__ == "__main__":
     obj = DataIngestion()
-    obj.initate_data_ingestion()
+    train_path,test_path=obj.initate_data_ingestion()
+
+    ############## checking the data transformation modelue
+    data_transformation = DataTransformation()
+    train_arr , test_arr = data_transformation.initiate_data_transformation(train_path, test_path)
