@@ -1,6 +1,7 @@
 import sys
 import pandas as pd
 from src.exception import CustomException
+from src.logger import logging
 from src.utils import load_object
 import os
 
@@ -59,6 +60,7 @@ class CustomData:
                 "writing_score": [self.writing_score],
             }
 
+            logging.info(f"The converting DataFrame {pd.DataFrame(custom_data_input_dict)}")
             return pd.DataFrame(custom_data_input_dict)
 
         except Exception as e:

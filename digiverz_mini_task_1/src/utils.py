@@ -13,7 +13,7 @@ def save_object(filepath,object):
     try:
         dir_path = os.path.dirname(filepath)#artifacts
         os.makedirs(dir_path,exist_ok=True)
-        with open(filepath, 'w') as f_obj:
+        with open(filepath, 'wb') as f_obj:
             dill.dump(object,f_obj)
         
     except Exception as e:
@@ -50,3 +50,17 @@ def evaluate_models(X_train, y_train,X_test,y_test,models,param):
 
     except Exception as e:
         raise CustomException(e, sys)
+
+
+def load_object(file_path):
+    try:
+        with open(file_path, "rb") as file_obj:
+            return dill.load(file_obj)
+
+    except Exception as e:
+        raise CustomException(e, sys)
+    
+
+if __name__ == "__main__":
+    model = load_object("artifacts/preprocessor.pkl")
+    print(model)
