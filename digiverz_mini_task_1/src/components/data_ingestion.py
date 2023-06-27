@@ -9,6 +9,7 @@ from sklearn.model_selection import train_test_split
 
 #########for debugging purpose
 from src.components.data_transformation import DataTransformation
+from src.components.model_trainer import ModelTrainer
 
 
 @dataclass
@@ -57,6 +58,10 @@ if __name__ == "__main__":
     obj = DataIngestion()
     train_path,test_path=obj.initate_data_ingestion()
 
-    ############## checking the data transformation modelue
+    ############## testing the data transformation modelue
     data_transformation = DataTransformation()
     train_arr , test_arr = data_transformation.initiate_data_transformation(train_path, test_path)
+
+    ################ testing the model trainer .py
+    model_trainer = ModelTrainer()
+    print(model_trainer.initiate_model_trainer(train_arr,test_arr))
